@@ -5,9 +5,14 @@
  */
 package ps.project.view.form;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import org.w3c.dom.ls.DOMImplementationLS;
 import ps.project.controller.Controller;
+import ps.project.view.form.util.FrmMode;
 
 /**
  *
@@ -18,11 +23,14 @@ public class FrmMain extends javax.swing.JFrame {
     /**
      * Creates new form FrmMain
      */
-    public FrmMain() {
+  FrmMode frmMode;
+    public FrmMain(FrmMode mode) {
         initComponents();
+        frmMode=mode;
         prepareView();
-       
     }
+
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,161 +41,166 @@ public class FrmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
-        lblimgHolder = new javax.swing.JLabel();
-        lblSuccesfulLoginMessage = new javax.swing.JLabel();
-        lblLoggedUser = new javax.swing.JLabel();
-        txtLoggedUser = new javax.swing.JTextField();
-        jMenuBarMain = new javax.swing.JMenuBar();
-        jMenuCustomer = new javax.swing.JMenu();
-        jmiNewCustomer = new javax.swing.JMenuItem();
-        jmiShowAllCustomers = new javax.swing.JMenuItem();
-        jMenuAutomobile = new javax.swing.JMenu();
-        jmiNewAutomobile = new javax.swing.JMenuItem();
-        jmiShowAllAutomobiles = new javax.swing.JMenuItem();
+        lblLoggedSeller = new javax.swing.JLabel();
+        btnNaturalPerson = new javax.swing.JButton();
+        btnLegalPerson = new javax.swing.JButton();
+        btnMainContracts = new javax.swing.JButton();
+        lblUserIcon = new javax.swing.JLabel();
+        btnMainCustomers = new javax.swing.JButton();
+        lblWelcomeMessage = new javax.swing.JLabel();
+        btnMainAutomobiles = new javax.swing.JButton();
+        lblBackgroud = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Početna ");
-        setSize(new java.awt.Dimension(1000, 640));
+        setTitle("Početna stranica");
+        setMaximumSize(new java.awt.Dimension(1366, 745));
+        setMinimumSize(new java.awt.Dimension(1366, 745));
+        setPreferredSize(new java.awt.Dimension(1366, 745));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1366, 745));
+        getContentPane().setLayout(null);
 
-        lblimgHolder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblimgHolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ps/project/img/imgMain.png"))); // NOI18N
+        lblLoggedSeller.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        getContentPane().add(lblLoggedSeller);
+        lblLoggedSeller.setBounds(30, 0, 170, 20);
 
-        lblSuccesfulLoginMessage.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblSuccesfulLoginMessage.setText(" Uspešna prijava na sistem!");
-
-        lblLoggedUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblLoggedUser.setText("Prijavljeni korisnik:");
-
-        txtLoggedUser.setEditable(false);
-        txtLoggedUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtLoggedUser.setText(" ");
-
-        jMenuBarMain.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        jMenuCustomer.setText("Kupac");
-
-        jmiNewCustomer.setText("Novi kupac");
-        jmiNewCustomer.addActionListener(new java.awt.event.ActionListener() {
+        btnNaturalPerson.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        btnNaturalPerson.setText("FIZIČKA LICA");
+        btnNaturalPerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiNewCustomerActionPerformed(evt);
+                btnNaturalPersonActionPerformed(evt);
             }
         });
-        jMenuCustomer.add(jmiNewCustomer);
+        getContentPane().add(btnNaturalPerson);
+        btnNaturalPerson.setBounds(540, 240, 230, 80);
 
-        jmiShowAllCustomers.setText("Prikaz kupaca");
-        jmiShowAllCustomers.addActionListener(new java.awt.event.ActionListener() {
+        btnLegalPerson.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        btnLegalPerson.setText("PRAVNA LICA");
+        btnLegalPerson.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiShowAllCustomersActionPerformed(evt);
+                btnLegalPersonActionPerformed(evt);
             }
         });
-        jMenuCustomer.add(jmiShowAllCustomers);
+        getContentPane().add(btnLegalPerson);
+        btnLegalPerson.setBounds(540, 130, 230, 80);
 
-        jMenuBarMain.add(jMenuCustomer);
-
-        jMenuAutomobile.setText("Automobil");
-        jMenuAutomobile.addActionListener(new java.awt.event.ActionListener() {
+        btnMainContracts.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        btnMainContracts.setText("UGOVORI");
+        btnMainContracts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuAutomobileActionPerformed(evt);
+                btnMainContractsActionPerformed(evt);
             }
         });
+        getContentPane().add(btnMainContracts);
+        btnMainContracts.setBounds(550, 160, 210, 140);
 
-        jmiNewAutomobile.setText("Novi automobil");
-        jmiNewAutomobile.addActionListener(new java.awt.event.ActionListener() {
+        lblUserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ps/project/img/user.png"))); // NOI18N
+        getContentPane().add(lblUserIcon);
+        lblUserIcon.setBounds(10, 0, 30, 20);
+
+        btnMainCustomers.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        btnMainCustomers.setText("KUPCI");
+        btnMainCustomers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiNewAutomobileActionPerformed(evt);
+                btnMainCustomersActionPerformed(evt);
             }
         });
-        jMenuAutomobile.add(jmiNewAutomobile);
+        getContentPane().add(btnMainCustomers);
+        btnMainCustomers.setBounds(110, 160, 210, 140);
 
-        jmiShowAllAutomobiles.setText("Prikaz automobila");
-        jmiShowAllAutomobiles.addActionListener(new java.awt.event.ActionListener() {
+        lblWelcomeMessage.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lblWelcomeMessage.setText("Dobro došli u autocentar Škoda!");
+        getContentPane().add(lblWelcomeMessage);
+        lblWelcomeMessage.setBounds(520, 10, 290, 26);
+
+        btnMainAutomobiles.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        btnMainAutomobiles.setText("AUTOMOBILI");
+        btnMainAutomobiles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiShowAllAutomobilesActionPerformed(evt);
+                btnMainAutomobilesActionPerformed(evt);
             }
         });
-        jMenuAutomobile.add(jmiShowAllAutomobiles);
+        getContentPane().add(btnMainAutomobiles);
+        btnMainAutomobiles.setBounds(1020, 160, 210, 140);
 
-        jMenuBarMain.add(jMenuAutomobile);
-
-        setJMenuBar(jMenuBarMain);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(334, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblimgHolder)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblLoggedUser)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLoggedUser)))
-                .addGap(334, 334, 334))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(377, 377, 377)
-                .addComponent(lblSuccesfulLoginMessage)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(lblimgHolder)
-                .addGap(40, 40, 40)
-                .addComponent(lblSuccesfulLoginMessage)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLoggedUser)
-                    .addComponent(txtLoggedUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(132, Short.MAX_VALUE))
-        );
+        lblBackgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ps/project/img/mainBackground.jpg"))); // NOI18N
+        getContentPane().add(lblBackgroud);
+        lblBackgroud.setBounds(0, -10, 1366, 760);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmiNewCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewCustomerActionPerformed
-        JDialog frmCustomer= new FrmCustomer(this, true);
-        frmCustomer.setVisible(true);
-    }//GEN-LAST:event_jmiNewCustomerActionPerformed
+    private void btnMainCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainCustomersActionPerformed
+         frmMode=FrmMode.CUSTOMER_OPTION;
+         setupComponents();
+         
+    }//GEN-LAST:event_btnMainCustomersActionPerformed
 
-    private void jmiNewAutomobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNewAutomobileActionPerformed
-       JDialog frmAutomobile= new FrmAutomobile(this, true);
-       frmAutomobile.setVisible(true);
-    }//GEN-LAST:event_jmiNewAutomobileActionPerformed
+    private void btnMainContractsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainContractsActionPerformed
+        System.out.println("Nije jos dodata forma ugovori");
+    }//GEN-LAST:event_btnMainContractsActionPerformed
 
-    private void jmiShowAllCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiShowAllCustomersActionPerformed
+    private void btnMainAutomobilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainAutomobilesActionPerformed
+        JDialog frmAutomobile= new FrmAutomobile(this, true);
+        frmAutomobile.setVisible(true);
+    }//GEN-LAST:event_btnMainAutomobilesActionPerformed
 
-    }//GEN-LAST:event_jmiShowAllCustomersActionPerformed
+    private void btnNaturalPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNaturalPersonActionPerformed
+         new FrmOverview(FrmMode.NATURAL_PERSON).setVisible(true);
+    }//GEN-LAST:event_btnNaturalPersonActionPerformed
 
-    private void jMenuAutomobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAutomobileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuAutomobileActionPerformed
-
-    private void jmiShowAllAutomobilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiShowAllAutomobilesActionPerformed
-        JDialog frmViewAutomobile = new FrmViewAutomobile(this, true);
-        frmViewAutomobile.setVisible(true);
-    }//GEN-LAST:event_jmiShowAllAutomobilesActionPerformed
+    private void btnLegalPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLegalPersonActionPerformed
+        new FrmOverview(FrmMode.LEGAL_PERSON).setVisible(true);
+    }//GEN-LAST:event_btnLegalPersonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenuAutomobile;
-    private javax.swing.JMenuBar jMenuBarMain;
-    private javax.swing.JMenu jMenuCustomer;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JMenuItem jmiNewAutomobile;
-    private javax.swing.JMenuItem jmiNewCustomer;
-    private javax.swing.JMenuItem jmiShowAllAutomobiles;
-    private javax.swing.JMenuItem jmiShowAllCustomers;
-    private javax.swing.JLabel lblLoggedUser;
-    private javax.swing.JLabel lblSuccesfulLoginMessage;
-    private javax.swing.JLabel lblimgHolder;
-    private javax.swing.JTextField txtLoggedUser;
+    private javax.swing.JButton btnLegalPerson;
+    private javax.swing.JButton btnMainAutomobiles;
+    private javax.swing.JButton btnMainContracts;
+    private javax.swing.JButton btnMainCustomers;
+    private javax.swing.JButton btnNaturalPerson;
+    private javax.swing.JLabel lblBackgroud;
+    private javax.swing.JLabel lblLoggedSeller;
+    private javax.swing.JLabel lblUserIcon;
+    private javax.swing.JLabel lblWelcomeMessage;
     // End of variables declaration//GEN-END:variables
 
     private void prepareView() {
-        setLocationRelativeTo(null);
+        //Pozicioniranje forme
+       
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        int w = this.getSize().width;
+        int h = this.getSize().height;
+        int x = (dim.width-w)/2;
+        int y = (dim.height-h)/2;
+        this.setLocation(x, y);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         
-        txtLoggedUser.setText(Controller.getInstance().getLoggedSeller().getFirstNname()+" "+ Controller.getInstance().getLoggedSeller().getLastName()+"");
+        //Ulogovani prodavac
+        lblLoggedSeller.setText(Controller.getInstance().getLoggedSeller().getFirstNname()+" "+Controller.getInstance().getLoggedSeller().getLastName());
+        setupComponents();
+    }
+
+    private void setupComponents() {
+        switch(frmMode){
+            case MAIN_OPTION:
+                btnMainCustomers.setEnabled(true);
+                btnMainAutomobiles.setEnabled(true);
+                btnMainContracts.setEnabled(true);
+      
+                btnLegalPerson.setVisible(false);
+                btnNaturalPerson.setVisible(false);
+                break;
+            case CUSTOMER_OPTION:
+                btnMainCustomers.setVisible(false);
+                btnMainAutomobiles.setVisible(false);
+                btnMainContracts.setVisible(false);
+                
+               btnLegalPerson.setVisible(true);
+                btnNaturalPerson.setVisible(true);
+                
+                break;
+         
+        }
     }
 }

@@ -9,8 +9,11 @@ package ps.project.view.form.util;
  *
  * @author saska
  */
-public enum FormMode {
+public enum FrmMode {
+    MAIN_OPTION,
+    CUSTOMER_OPTION,
+    NATURAL_PERSON,
+    LEGAL_PERSON,
     INSERT,
-    EDIT,
-    VIEW
+    EDIT
 }

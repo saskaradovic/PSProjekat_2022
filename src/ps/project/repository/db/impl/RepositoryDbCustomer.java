@@ -43,10 +43,7 @@ public class RepositoryDbCustomer implements DbRepository<Customer> {
         }
     }
 
-    @Override
-    public void edit(Customer param) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     @Override
     public void delete(Customer param) throws Exception {
@@ -57,13 +54,13 @@ public class RepositoryDbCustomer implements DbRepository<Customer> {
     public List<Customer> getAll() {
         try {
             String sql = "SELECT * FROM Customer";
-          
+
             List<Customer> customers = new ArrayList<>();
             Connection connection = DbConnectionFactory.getInstance().getConnection();
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
-            while(rs.next()){
-                Customer c= new Customer();
+            while (rs.next()) {
+                Customer c = new Customer();
                 c.setId(rs.getLong("id"));
                 c.setFirstName(rs.getString("firstname"));
                 c.setLastName(rs.getString("lastname"));
@@ -79,6 +76,32 @@ public class RepositoryDbCustomer implements DbRepository<Customer> {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+
+    @Override
+    public void edit(Customer c) throws Exception {
+        try {
+            String sql = "UDATE Customer c SET(firstname=?, lastname=?, address=?, phonenumber=?, email=?, postalcode=?) WHERE c.id=?";
+
+           
+            Connection connection = DbConnectionFactory.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            
+            statement.setString(1, c.getFirstName());
+            statement.setString(2, c.getLastName());
+            statement.setString(3, c.getAddress());
+            statement.setString(4, c.getPhoneNumber());
+            statement.setString(5, c.getEmail());
+            statement.setString(6, c.getPostalCode());
+            statement.setString(0, sql);
+           
+           
+            statement.close();
+           
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            
         }
     }
 

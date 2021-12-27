@@ -10,7 +10,8 @@ import ps.project.repository.Repository;
 /**
  *
  * @author laptop-02
+ * @param <T>
  */
 public interface DbRepository<T>  extends Repository<T>{
-    
+  
 }

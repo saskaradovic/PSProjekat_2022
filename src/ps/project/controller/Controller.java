@@ -17,6 +17,7 @@ import ps.project.repository.db.DbConnectionFactory;
 import ps.project.repository.db.impl.RepositoryDbCustomer;
 import ps.project.repository.db.impl.RepositoryDbSeller;
 
+
 /**
  *
  * @author saska
@@ -27,6 +28,7 @@ public class Controller {
     private final Repository repositoryCustomer;
     private static Controller controller;
     private Seller loggedSeller = new Seller();
+    
 
     private Controller() {
 
@@ -57,26 +59,41 @@ public class Controller {
         return loggedSeller;
     }
 
-    public void saveCustomer(Customer c) throws Exception {
-        //Customer ima random zadati id koji ne prosledjujem u bazu
-        if (!(c.getId().toString().isEmpty()) && !(c.getFirstName().isEmpty()) && !(c.getLastName().isEmpty()) && !(c.getAddress().isEmpty())
-                && !(c.getPhoneNumber().isEmpty()) && !(c.getEmail().isEmpty()) && !(c.getPostalCode().isEmpty())) {
-            List<Customer> customers= repositoryCustomer.getAll();
-            for (Customer customer : customers) {
-                if(customer.getEmail().equals(c.getEmail())){
-                    JOptionPane.showMessageDialog(null, "Ovaj kupac već postoji u bazi", "Greška!", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
+    public int saveCustomer(Customer c) throws Exception {
+
+        //Validacija unetih podataka
+        List<Customer> customers = repositoryCustomer.getAll();
+        for (Customer customer : customers) {
+            if (customer.getEmail().equals(c.getEmail())) {
+                JOptionPane.showMessageDialog(null, "Ovaj kupac već postoji u bazi.\n Pokušajte ponovo!", "Greška", JOptionPane.ERROR_MESSAGE);
+                return 0;
             }
-            repositoryCustomer.add(c);
-        }else{
-            throw new Exception("Unos odbijen!");
         }
+        repositoryCustomer.add(c);
+        return 1;
 
     }
 
     public List<Customer> getAllCustomers() {
         return repositoryCustomer.getAll();
     }
+
+    public int editCustomer(Customer c) throws Exception {
+        //ako postoji u bazi sa takvim idom-izmeni
+           List<Customer> customers = repositoryCustomer.getAll();
+            for (Customer customer : customers) {
+                if(customer.getId()==c.getId()){
+                //cuvaj
+                repositoryCustomer.edit(c);
+                return 1;
+                }
+            }
+             return 0;
+    }
+
+  
+
+
+  
 
 }
