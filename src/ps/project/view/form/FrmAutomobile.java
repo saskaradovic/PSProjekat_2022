@@ -28,6 +28,7 @@ public class FrmAutomobile extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         prepareView();
+        System.out.println("test");
     }
 
     /**
